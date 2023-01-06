@@ -4,8 +4,22 @@ class Program
 {
     static int Main(string[] argv)
     {
-        RunStack();
+        RunQueue();
         return 0;
+    }
+
+    static void RunQueue()
+    {
+        Queue<int> q = new Queue<int>();
+        q.Enqueue(1);
+        q.Enqueue(2);
+        q.Enqueue(3);
+        Console.WriteLine("size => {0}", q.Size());
+        Console.WriteLine("dequeue => {0}", q.Dequeue());
+        Console.WriteLine("dequeue => {0}", q.Dequeue());
+        Console.WriteLine("dequeue => {0}", q.Dequeue());
+        Console.WriteLine("size => {0}", q.Size());
+
     }
 
     static void RunStack()

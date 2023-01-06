@@ -2,7 +2,7 @@ interface IQueue<T>
 {
     void Enqueue(T value);
 
-    T? Dequeue(T value);
+    T? Dequeue();
 
     bool IsEmpty();
 

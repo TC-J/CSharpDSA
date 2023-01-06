@@ -4,8 +4,21 @@ class Program
 {
     static int Main(string[] argv)
     {
-        RunLinkedList();
+        RunStack();
         return 0;
+    }
+
+    static void RunStack()
+    {
+        var stack = new Stack<int>();
+
+        stack.Push(9);
+        Console.WriteLine("Push => {0}, size {1}", 9, stack.Size());
+        stack.Push(10);
+        Console.WriteLine("Push => {0}, size {1}", 10, stack.Size());
+
+        Console.WriteLine("Pop => {0}, new size {1}", stack.Pop(), stack.Size());
+        Console.WriteLine("Pop => {0}, new size {1}", stack.Pop(), stack.Size());
     }
 
     static void RunLinkedList()

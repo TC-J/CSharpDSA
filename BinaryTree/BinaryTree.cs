@@ -272,6 +272,13 @@ class BinaryTree<K, V> : IBinaryTree<K, V>
 
     public int Size()
     {
-        throw new NotImplementedException();
+        int count = 0;
+
+        this.Inorder((_, _) =>
+        {
+            count++;
+        });
+
+        return count;
     }
 }

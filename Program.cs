@@ -100,6 +100,8 @@ class Program
         {
             Console.WriteLine("Key {0} => {1}", k, v);
         });
+
+        Console.WriteLine("Size => {0}", bt.Size());
     }
     static void RunQueue()
     {

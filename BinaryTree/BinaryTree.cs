@@ -127,7 +127,79 @@ class BinaryTree<K, V> : IBinaryTree<K, V>
         }
 
         public void Preorder(Action<KT, VT> lambda)
-        { }
+        {
+            if (saveroot == null)
+            {
+                saveroot = this;
+
+                lambda(this.Key, this.Value);
+
+                if (this.Left != null)
+                {
+                    lambda(this.Left.Key, this.Left.Value);
+                    this.Left.Preorder(lambda);
+                }
+
+                if (this.Right != null)
+                {
+                    lambda(this.Right.Key, this.Right.Value);
+                    this.Right.Preorder(lambda);
+                }
+
+                saveroot = default;
+
+                return;
+            }
+
+            if (this.Left != null)
+            {
+                lambda(this.Left.Key, this.Left.Value);
+                this.Left.Preorder(lambda);
+            }
+
+            if (this.Right != null)
+            {
+                lambda(this.Right.Key, this.Right.Value);
+                this.Right.Preorder(lambda);
+            }
+        }
+
+        public void Postorder(Action<KT, VT> lambda)
+        {
+            if (saveroot == null)
+            {
+                saveroot = this;
+                if (this.Left != null)
+                {
+                    this.Left.Postorder(lambda);
+                    lambda(this.Left.Key, this.Left.Value);
+                }
+
+                if (this.Right != null)
+                {
+                    this.Right.Postorder(lambda);
+                    lambda(this.Right.Key, this.Right.Value);
+                }
+
+                lambda(saveroot.Key, saveroot.Value);
+
+                saveroot = default;
+
+                return;
+            }
+
+            if (this.Left != null)
+            {
+                this.Left.Postorder(lambda);
+                lambda(this.Left.Key, this.Left.Value);
+            }
+
+            if (this.Right != null)
+            {
+                this.Right.Postorder(lambda);
+                lambda(this.Right.Key, this.Right.Value);
+            }
+        }
     }
 
 
@@ -186,6 +258,16 @@ class BinaryTree<K, V> : IBinaryTree<K, V>
     public void Inorder(Action<K, V> lambda)
     {
         this.Root!.Inorder(lambda);
+    }
+
+    public void Preorder(Action<K, V> lambda)
+    {
+        this.Root!.Preorder(lambda);
+    }
+
+    public void Postorder(Action<K, V> lambda)
+    {
+        this.Root!.Postorder(lambda);
     }
 
     public int Size()

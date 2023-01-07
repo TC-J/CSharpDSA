@@ -52,6 +52,8 @@ class Program
         var d4 = bt.Root!.Depth(25);
         Console.WriteLine("Depth of Key {0} => {1}", 25, d4);
 
+        Console.WriteLine("\n\nInorder\n");
+
         bt.Root!.Left!.Inorder((k, v) =>
         {
             Console.WriteLine("Key {0} => {1}", k, v);
@@ -71,6 +73,33 @@ class Program
             Console.WriteLine("Key {0} => {1}", k, v);
         });
 
+        Console.WriteLine("\n\nPreorder\n");
+
+        bt.Root!.Left!.Preorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
+
+        Console.WriteLine();
+
+        bt.Preorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
+
+        Console.WriteLine();
+
+        bt.Preorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
+
+        Console.WriteLine("\n\nPostorder\n");
+
+        bt.Postorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
     }
     static void RunQueue()
     {

@@ -4,10 +4,74 @@ class Program
 {
     static int Main(string[] argv)
     {
-        RunQueue();
+        RunBinaryTree();
         return 0;
     }
 
+    static void RunBinaryTree()
+    {
+        var bt = new BinaryTree<int, int>();
+        bt.Insert(10, 1);
+        bt.Insert(-20, 2);
+        bt.Insert(20, 3);
+        bt.Insert(25, 4);
+        bt.Insert(15, 5);
+        bt.Insert(-15, 6);
+        bt.Insert(-25, 7);
+
+        var v0 = bt.Root!.Value;
+        var v1 = bt.Root!.Left!.Value;
+        var v2 = bt.Root!.Right!.Value;
+        var v3 = bt.Root!.Right!.Right!.Value;
+        var v4 = bt.Root!.Right!.Left!.Value;
+        var v5 = bt.Root!.Left!.Right!.Value;
+        var v6 = bt.Root!.Left!.Left!.Value;
+        Console.WriteLine("Root => {0}", v0);
+        Console.WriteLine("Root.Left => {0}", v1);
+        Console.WriteLine("Root.Right => {0}", v2);
+        Console.WriteLine("Root.Right.Right => {0}", v3);
+        Console.WriteLine("Root.Right.Left => {0}", v4);
+        Console.WriteLine("Root.Left.Right => {0}", v5);
+        Console.WriteLine("Root.Left.Left => {0}", v6);
+
+        var v7 = bt.Root!.Search(20)!.Value;
+        Console.WriteLine("Search Key {0} => {1}", 20, v7);
+
+        var d0 = bt.Root!.Depth(-25);
+        Console.WriteLine("Depth of Key {0} => {1}", -25, d0);
+
+        var d1 = bt.Root!.Depth(-20);
+        Console.WriteLine("Depth of Key {0} => {1}", -20, d1);
+
+        var d2 = bt.Root!.Depth(10);
+        Console.WriteLine("Depth of Key {0} => {1}", 10, d2);
+
+        var d3 = bt.Root!.Depth(20);
+        Console.WriteLine("Depth of Key {0} => {1}", 20, d3);
+
+        var d4 = bt.Root!.Depth(25);
+        Console.WriteLine("Depth of Key {0} => {1}", 25, d4);
+
+        bt.Root!.Left!.Inorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
+
+        Console.WriteLine();
+
+        bt.Inorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
+
+        Console.WriteLine();
+
+        bt.Inorder((k, v) =>
+        {
+            Console.WriteLine("Key {0} => {1}", k, v);
+        });
+
+    }
     static void RunQueue()
     {
         Queue<int> q = new Queue<int>();
